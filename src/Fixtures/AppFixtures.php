@@ -16,7 +16,7 @@ class AppFixtures extends Fixture
             $category = new Category();
             $category->setName('category '.$i);
             $manager->persist($category);
-            $categories[i] = $category;
+            $categories[] = $category;
         }
 
         for ($i = 0; $i < 10; $i++) {
@@ -28,7 +28,7 @@ class AppFixtures extends Fixture
             $plant->setOrigin('Europe');
             $plant->setDescription('This is a fake plant here.');
             $plant->setImageUrl('images/fake_plant.jpeg');
-            $plant->setCategory($categories[i]);
+            $plant->addCategory($categories[$i]);
             $manager->persist($plant);
         }
 
