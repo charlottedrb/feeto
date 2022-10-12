@@ -24,9 +24,13 @@ class Category
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
     private Collection $subcategories;
 
+    #[ORM\ManyToMany(targetEntity: Plant::class, mappedBy: 'category')]
+    private Collection $plants;
+
     public function __construct()
     {
         $this->subcategories = new ArrayCollection();
+        $this->plants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -83,6 +87,33 @@ class Category
             if ($subcategory->getParent() === $this) {
                 $subcategory->setParent(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Plant>
+     */
+    public function getPlants(): Collection
+    {
+        return $this->plants;
+    }
+
+    public function addPlant(Plant $plant): self
+    {
+        if (!$this->plants->contains($plant)) {
+            $this->plants->add($plant);
+            $plant->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlant(Plant $plant): self
+    {
+        if ($this->plants->removeElement($plant)) {
+            $plant->removeCategory($this);
         }
 
         return $this;
