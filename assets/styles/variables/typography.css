@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Ogg';
+    src: url('../../fonts/Ogg-Roman.woff2') format('woff2'),
+        url('../../fonts/Ogg-Roman.woff') format('woff'),
+        url('../../fonts/Ogg-Roman.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue LT Std';
+    src: url('../../fonts/HelveticaNeueLTStd-UltLt.woff2') format('woff2'),
+        url('../../fonts/HelveticaNeueLTStd-UltLt.woff') format('woff'),
+        url('../../fonts/HelveticaNeueLTStd-UltLt.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+h1, h2 {
+    @apply font-serif text-green text-130 leading-[120%];
+}
+
+h3 {
+    @apply font-sans text-black text-32 text-center bg-white px-[40px] py-[40px] rounded-full border-[1px] border-green w-[max-content] h-[max-content];
+}
+
+h4 {
+    @apply font-serif text-black text-36;
+}
+
+h5 {
+    @apply font-serif text-gray text-30;
+}
