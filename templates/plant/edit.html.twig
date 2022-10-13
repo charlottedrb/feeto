@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Plant{% endblock %}
+{% block title %}Feetō{% endblock %}
 
 {% block body %}
-    <h1>Edit Plant</h1>
+    <h1>{{ 'Edit Plant'|trans }}</h1>
 
     {{ include('plant/_form.html.twig', {'button_label': 'Update'}) }}
 

@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Feetō{% endblock %}
 
 {% block body %}
     <div class="px-container mb-[60px]">
         <div class="mb-[60px]">
-            <h1>Register</h1>
-            <span class="block font-serif text-dark-green pl-[220px]">Join a community of plant fanatics.</span>
+            <h1>{{ 'Register'|trans }}</h1>
+            <span class="block font-serif text-dark-green pl-[220px]">{{ 'Join a community of plant fanatics.'|trans }}</span>
         </div>
         {{ form_start(registrationForm, {'attr': {'class': 'flex flex-col items-center w-full form-dark'}}) }}
             <div class="flex flex-col w-full">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="button-dark-outlined mt-[60px]">Register</button>
+            <button type="submit" class="button-dark-outlined mt-[60px]">{{ 'Register'|trans }}</button>
         {{ form_end(registrationForm) }}
     </div>
 {% endblock %}

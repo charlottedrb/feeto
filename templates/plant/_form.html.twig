@@ -12,7 +12,7 @@
 	<div class="flex gap-x-[20px] w-full">
         <div class="w-6/12">{{ form_widget(form.complexity) }}</div>
         <div class="w-6/12 input-file-container">
-            <label for="plant_image_url">Add an image</label>
+            <label for="plant_image_url">{{ 'Add an image'|trans }}</label>
             <div class="text-[16px] inline-block text-dark-green text-right">{{ form_errors(form.image_url) }}</div>
             <div class="hidden">{{ form_widget(form.image_url) }}</div>
         </div>

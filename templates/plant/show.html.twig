@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Plant{% endblock %}
+{% block title %}Feetō{% endblock %}
 
 {% block body %}
 {# {% if is_granted('ROLE_USER') %}
@@ -25,9 +25,9 @@
         <div class="mt-130 mb-130">
             <p class="tag">{{ plant.size }} cm</p>
             <p class="tag">{{ plant.origin }}</p>
-            <p class="tag">Level {{ plant.complexity }}</p>
+            <p class="tag">{{ 'Level'|trans }} {{ plant.complexity }}</p>
         </div>
-        <img class="absolute" style="z-index: -1; right: -10%; height: 160%; top: 20%;" src="{{ asset('/images/' ~ plant.imageUrl) }}" alt="image de la plante" />
+        <img class="absolute" style="z-index: -1; right: -10%; height: 160%; top: 20%;" src="{{ asset('/images/' ~ plant.imageUrl) }}" alt="{{ 'Plant\'s img'|trans }}" />
     </div>
 
     {# <a href="{{ path('app_plant_index') }}">back to list</a>

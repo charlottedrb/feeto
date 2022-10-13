@@ -3,7 +3,6 @@
 {% block title %}Feetō{% endblock %}
 
 {% block body %}
-{{ app.request.locale }}
 <div class="flex flex-col items-center">
     <h1 class="mb-[160px] px-container">{{ 'Your new digital herbarium'|trans }}.</h1>
     <div class="relative w-full flex flex-col items-center">
@@ -12,7 +11,7 @@
             {% if app.user %}
                 {{ 'Hello'|trans }} {{ app.user.getFirstName() }}, {{ 'check out our latest plants'|trans }}.
             {% else %}
-                Join us, <a class="underline" href="{{ path('app_register') }}">click here</a>.
+                {{ 'Join us'|trans }}, <a class="underline" href="{{ path('app_register') }}">{{ 'click here'|trans }}</a>.
             {% endif %}
             
         </h3>
