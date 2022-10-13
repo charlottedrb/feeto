@@ -22,6 +22,10 @@ h1 {
     @apply font-serif text-green text-130 leading-[120%];
 }
 
+.subtitle {
+    @apply font-serif text-gray text-[100px] leading-[110%];
+}
+
 h2 {
     @apply font-serif text-green text-80 leading-[120%]
 }
@@ -40,4 +44,9 @@ h5 {
 
 p {
     @apply text-32 leading-[118%];
+}
+
+.tag {
+    @apply font-sans text-white text-32 bg-dark-green rounded-full px-16 py-4 mr-10;
+    display: initial;
 }
