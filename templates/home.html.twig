@@ -9,11 +9,15 @@
     <div class="relative w-full flex flex-col items-center">
         <div class="w-full h-[80vh] bg-green absolute top-[55px] left-0 -z-[1]"></div>
         <h3 class="mb-[80px]">Hello Mathilde, check out our latest plants.</h3>
-        <div class="flex w-full px-container gap-x-[20px]">
+        <div class="grid grid-cols-3 w-full px-container gap-[20px] mb-170">
+            {% include "plant/card.html.twig" %}
+            {% include "plant/card.html.twig" %}
+            {% include "plant/card.html.twig" %}
             {% include "plant/card.html.twig" %}
             {% include "plant/card.html.twig" %}
             {% include "plant/card.html.twig" %}
         </div>
+        {% include "partials/cta.html.twig" %}
     </div>   
 </div>
 {% endblock %}

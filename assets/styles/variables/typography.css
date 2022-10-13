@@ -9,22 +9,25 @@
 }
 
 @font-face {
-    font-family: 'Helvetica Neue LT Std';
-    src: url('../../fonts/HelveticaNeueLTStd-UltLt.woff2') format('woff2'),
-        url('../../fonts/HelveticaNeueLTStd-UltLt.woff') format('woff'),
-        url('../../fonts/HelveticaNeueLTStd-UltLt.ttf') format('truetype');
-    font-weight: 200;
+    font-family: 'HelveticaNeue';
+    src: url('../../fonts/HelveticaNeueLight.woff2') format('woff2'),
+        url('../../fonts/HelveticaNeueLight.woff') format('woff'),
+        url('../../fonts/HelveticaNeueLight.ttf') format('truetype');
+    font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 
-
-h1, h2 {
+h1 {
     @apply font-serif text-green text-130 leading-[120%];
 }
 
+h2 {
+    @apply font-serif text-green text-80 leading-[120%]
+}
+
 h3 {
-    @apply font-sans text-black text-32 text-center bg-white px-[40px] py-[40px] rounded-full border-[1px] border-green w-[max-content] h-[max-content];
+    @apply font-sans text-black text-32 text-center bg-white p-40 rounded-full border-[1px] border-green w-[max-content] h-[max-content];
 }
 
 h4 {
@@ -33,4 +36,8 @@ h4 {
 
 h5 {
     @apply font-serif text-gray text-30;
+}
+
+p {
+    @apply text-32 leading-[118%];
 }

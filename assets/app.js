@@ -12,7 +12,7 @@ import './styles/forms.css';
 // Variables 
 import './styles/variables/colors.css'
 import './styles/variables/typography.css'
-
+import './styles/variables/atoms.css'
 
 // start the Stimulus application
 import './bootstrap';

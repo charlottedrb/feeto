@@ -7,13 +7,14 @@ module.exports = {
   theme: {
     fontFamily: {
       'serif': ['Ogg', 'serif'],
-      'sans': ['Helvetica Neue LT Std', 'sans-serif'],
+      'sans': ['HelveticaNeue', 'sans-serif'],
     },
     fontSize: {
       '30': '30px',
       '32': '32px',
       '36': '36px',
       '60': '60px',
+      '80': '80px',
       '130': '130px'
     },
     colors: {
@@ -45,9 +46,13 @@ module.exports = {
     },
     extend: {
       padding: {
+        '40': '40px',
+        '60': '60px',
         'container': '50px'
       },
       margin: {
+        '50': '50px',
+        '170': '170px',
         'container': '50px'
       },
     },
