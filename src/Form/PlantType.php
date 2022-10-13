@@ -21,7 +21,7 @@ class PlantType extends AbstractType
             ->add('complexity')
             ->add('description')
             ->add('image_url')
-            ->add('category', EntityType::class, [
+            ->add('categories', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
                 'multiple' => true,

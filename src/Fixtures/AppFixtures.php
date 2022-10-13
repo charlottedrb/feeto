@@ -11,25 +11,76 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $categories = [];
-        for ($i = 0; $i < 10; $i++) {
+        $categories = ['Intérieur', 'Extérieur'];
+        $interiorCategories = ['Ombre', 'Pièce lumineuse', 'Gourmande', 'Increvable'];
+        $exteriorCategories = ['Printemps/Été', 'Automne/Hiver'];
+        $plants = [
+            'Monstera Deliciosa' => [
+                'size' => 40,
+                'categories' => ['Pièce lumineuse', 'Gourmande'],
+                'complexity' => 2,
+                'price' => 30,
+                'origin' => 'Mexique',
+                'description' => "The monstera deliociosa is a plant which need not much water but a lot of sunlight. But be careful, you must not put it under direct sun light, unless you won’t to burn it down.",
+                'image' => 'images/monstera.png',
+            ],
+            'Philodendron' => [
+                'size' => 40,
+                'categories' => ['Ombre'],
+                'complexity' => 4,
+                'price' => 40,
+                'origin' => 'Brésil',
+                'description' => "The monstera deliociosa is a plant which need not much water but a lot of sunlight. But be careful, you must not put it under direct sun light, unless you won’t to burn it down.",
+                'image' => 'images/philodendron.png',
+            ],
+            'Aloe Vera' => [
+                'size' => 20,
+                'categories' => ['Increvable', 'Pièce lumineuse'],
+                'complexity' => 1,
+                'price' => 15,
+                'origin' => 'Indonésie',
+                'description' => "The monstera deliociosa is a plant which need not much water but a lot of sunlight. But be careful, you must not put it under direct sun light, unless you won’t to burn it down.",
+                'image' => 'images/aloe-vera.png',
+            ],
+        ];
+
+        foreach ($categories as $cat) {
             $category = new Category();
-            $category->setName('category '.$i);
+            $category->setName($cat);
             $manager->persist($category);
-            $categories[] = $category;
+            $this->addReference($cat, $category);
         }
 
-        for ($i = 0; $i < 10; $i++) {
-            $plant = new Plant();
-            $plant->setName('plant '.$i);
-            $plant->setSize(mt_rand(1, 10));
-            $plant->setComplexity(mt_rand(1, 5));
-            $plant->setPrice(mt_rand(10, 100));
-            $plant->setOrigin('Europe');
-            $plant->setDescription('This is a fake plant here.');
-            $plant->setImageUrl('images/fake_plant.jpeg');
-            $plant->addCategory($categories[$i]);
-            $manager->persist($plant);
+        foreach ($interiorCategories as $cat) {
+            $category = new Category();
+            $category->setName($cat);
+            $category->setParent($this->getReference('Intérieur'));
+            $manager->persist($category);
+            $this->addReference($cat, $category);
+        }
+
+        foreach ($exteriorCategories as $cat) {
+            $category = new Category();
+            $category->setName($cat);
+            $category->setParent($this->getReference('Extérieur'));
+            $manager->persist($category);
+            $this->addReference($cat, $category);
+        }
+        
+        foreach ($plants as $name => $plant) {
+            $dbPlant = new Plant();
+            $dbPlant->setName($name);
+            $dbPlant->setSize($plant['size']);
+            $dbPlant->setComplexity($plant['complexity']);
+            $dbPlant->setPrice($plant['price']);
+            $dbPlant->setOrigin($plant['origin']);
+            $dbPlant->setDescription($plant['description']);
+            $dbPlant->setImageUrl($plant['image']);
+
+            foreach ($plant['categories'] as $cat) {
+                $dbPlant->addCategory($this->getReference($cat));
+            }
+            $manager->persist($dbPlant);
         }
 
         $manager->flush();

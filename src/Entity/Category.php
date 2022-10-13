@@ -24,7 +24,7 @@ class Category
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
     private Collection $subcategories;
 
-    #[ORM\ManyToMany(targetEntity: Plant::class, mappedBy: 'category')]
+    #[ORM\ManyToMany(targetEntity: Plant::class, mappedBy: 'categories')]
     private Collection $plants;
 
     public function __construct()
