@@ -1,16 +1,22 @@
 <header class="px-container mb-[115px]">
 	<div class="flex justify-between items-center">
-		<div class="w-8/12">
+		<div class="w-6/12">
 			<a href="{{ path('app_home') }}" class="text-60 font-serif tracking-[1.25rem] text-green">feetō</a>
 		</div>
-		<div class="flex gap-x-[30px] font-sans text-30">
-            <a href="{{ path('app_plant_index') }}">plants</a>
-            <a href="{{ path('app_profile') }}">profile</a>
-            <a href="#">my reviews</a>
-
-			{% if is_granted('ROLE_ADMIN') %} 
-				<a href="#">admin</a>
-			{% endif %}
-        </div>
+		<div class="flex gap-x-[50px]">
+			<div class="flex gap-x-[30px] font-sans text-30">
+				<a href="{{ path('app_plant_index') }}">plants</a>
+				<a href="{{ path('app_profile') }}">profile</a>
+				<a href="#">my reviews</a>
+				{% if is_granted('ROLE_ADMIN') %}
+					<a href="#">admin</a>
+				{% endif %}
+			</div>
+			<div class="flex gap-x-[10px] font-sans text-30">
+				<a href="{{ path('app_change_locale', {'locale': 'en'}) }}" class="{% if app.request.locale == 'en' %} text-green {% else %} text-gray {% endif %}">en</a>
+				<span>|</span>
+				<a href="{{ path('app_change_locale', {'locale': 'fr_FR'}) }}" class="{% if app.request.locale == 'fr_FR' %} text-green {% else %} text-gray {% endif %}">fr</a>
+			</div>
+		</div>
 	</div>
 </header>
