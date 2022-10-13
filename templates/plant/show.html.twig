@@ -3,48 +3,36 @@
 {% block title %}Plant{% endblock %}
 
 {% block body %}
-    <h1>Plant</h1>
+{# {% if is_granted('ROLE_USER') %}
+    <h2>USER</h2>
+{% else %}
+    <h2>NOT CONNECTED</h2>
+{% endif %}
+{% if is_granted('ROLE_ADMIN') %}
+    <h2>ADMIN</h2>
+{% else %}
+    <h2>NOT ADMIN</h2>
+{% endif %} #}
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ plant.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ plant.name }}</td>
-            </tr>
-            <tr>
-                <th>Size</th>
-                <td>{{ plant.size }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ plant.price }}</td>
-            </tr>
-            <tr>
-                <th>Origin</th>
-                <td>{{ plant.origin }}</td>
-            </tr>
-            <tr>
-                <th>Complexity</th>
-                <td>{{ plant.complexity }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ plant.description }}</td>
-            </tr>
-            <tr>
-                <th>Image_url</th>
-                <td>{{ plant.imageUrl }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="px-container">
+        <h1 class="w-5/12">{{ plant.name }}</h1>
+        <div class="mt-25">
+            {% for categorie in plant.categories %}
+                <p class="subtitle">{{ categorie.name }}</p>
+            {% endfor %}
+        </div>
+        <p class="w-6/12 mt-50">{{ plant.description }}</p>
+        <div class="mt-130 mb-130">
+            <p class="tag">{{ plant.size }} cm</p>
+            <p class="tag">{{ plant.origin }}</p>
+            <p class="tag">Level {{ plant.complexity }}</p>
+        </div>
+        <img class="absolute" style="z-index: -1; right: -10%; height: 160%; top: 20%;" src="{{ asset(plant.imageUrl) }}" alt="image de la plante" />
+    </div>
 
-    <a href="{{ path('app_plant_index') }}">back to list</a>
+    {# <a href="{{ path('app_plant_index') }}">back to list</a>
 
     <a href="{{ path('app_plant_edit', {'id': plant.id}) }}">edit</a>
 
-    {{ include('plant/_delete_form.html.twig') }}
+    {{ include('plant/_delete_form.html.twig') }} #}
 {% endblock %}
