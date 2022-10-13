@@ -11,13 +11,28 @@
         {{ form_start(registrationForm, {'attr': {'class': 'flex flex-col items-center w-full form-dark'}}) }}
             <div class="flex flex-col w-full">
                 <div class="flex gap-x-[20px]">
-                    <div class="w-6/12">{{ form_widget(registrationForm.username) }}</div>
-                    <div class="w-6/12">{{ form_widget(registrationForm.email) }}</div>
+                    <div class="flex flex-col w-6/12">
+                        <div class="w-full">{{ form_widget(registrationForm.username) }}</div>
+                        <div class="text-[16px] font-serif inline-block text-green">{{ form_errors(registrationForm.username) }}</div>
+                    </div>
+                    <div class="flex flex-col w-6/12">
+                        <div class="w-full">{{ form_widget(registrationForm.email) }}</div>
+                        <div class="text-[16px] font-serif inline-block text-green">{{ form_errors(registrationForm.email) }}</div>
+                    </div>
                 </div>
                 <div class="flex gap-x-[20px]">
-                    <div class="w-4/12">{{ form_widget(registrationForm.first_name) }}</div>
-                    <div class="w-4/12">{{ form_widget(registrationForm.last_name) }}</div>
-                    <div class="w-4/12">{{ form_widget(registrationForm.plainPassword) }}</div>
+                    <div class="flex flex-col w-4/12">
+                        <div class="w-full">{{ form_widget(registrationForm.first_name) }}</div>
+                        <div class="text-[16px] font-serif inline-block text-green">{{ form_errors(registrationForm.first_name) }}</div>
+                    </div>
+                    <div class="flex flex-col w-4/12">
+                        <div class="w-full">{{ form_widget(registrationForm.last_name) }}</div>
+                        <div class="text-[16px] font-serif inline-block text-green">{{ form_errors(registrationForm.last_name) }}</div>
+                    </div>
+                    <div class="flex flex-col w-4/12">
+                        <div class="w-full">{{ form_widget(registrationForm.plainPassword) }}</div>
+                        <div class="text-[16px] font-serif inline-block text-green">{{ form_errors(registrationForm.plainPassword) }}</div>
+                    </div>
                 </div>
             </div>
             <button type="submit" class="button-dark-outlined mt-[60px]">Register</button>
