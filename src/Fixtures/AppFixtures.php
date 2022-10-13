@@ -4,13 +4,29 @@ namespace App\Fixtures;
 
 use App\Entity\Plant;
 use App\Entity\Category;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+    public function __construct(UserPasswordHasherInterface $userPasswordHasher) 
+    {
+        $this->passwordHasher = $userPasswordHasher;
+    }
+
     public function load(ObjectManager $manager)
     {
+        $users = [
+            'admin' => [
+                'email' => 'test@admin.fr',
+                'first_name' => 'Admin',
+                'last_name' => 'Feeto',
+                'password' => 'feeto2',
+                'title' => 'Jardinier confirmé',
+            ],
+        ];
         $categories = ['Intérieur', 'Extérieur'];
         $interiorCategories = ['Ombre', 'Pièce lumineuse', 'Gourmande', 'Increvable'];
         $exteriorCategories = ['Printemps/Été', 'Automne/Hiver'];
@@ -43,6 +59,25 @@ class AppFixtures extends Fixture
                 'image' => 'aloe-vera.png',
             ],
         ];
+
+        foreach ($users as $username => $user) {
+            $dbUser = new User();
+            $dbUser->setUsername($username);
+            $dbUser->setTitle($user['title']);
+            $dbUser->setEmail($user['email']);
+            $dbUser->setFirstName($user['first_name']);
+            $dbUser->setLastName($user['last_name']);
+            $dbUser->setPassword($user['password']);
+            $dbUser->setPassword(
+                $this->passwordHasher->hashPassword(
+                    $dbUser,
+                    $user['password']
+                )
+            );
+            $dbUser->setRoles(['ROLE_ADMIN']);
+            $dbUser->addRole('ROLE_ADMIN');
+            $manager->persist($dbUser);
+        }
 
         foreach ($categories as $cat) {
             $category = new Category();
