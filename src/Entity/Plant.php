@@ -46,6 +46,8 @@ class Plant
     #[ORM\Column(length: 255)]
     private ?string $image_url = null;
 
+    
+
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'plants')]
     private Collection $categories;
 

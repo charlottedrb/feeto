@@ -22,7 +22,7 @@ class AppFixtures extends Fixture
                 'price' => 30,
                 'origin' => 'Mexique',
                 'description' => "The monstera deliociosa is a plant which need not much water but a lot of sunlight. But be careful, you must not put it under direct sun light, unless you won’t to burn it down.",
-                'image' => 'images/monstera.png',
+                'image' => 'monstera.png',
             ],
             'Philodendron' => [
                 'size' => 40,
@@ -31,7 +31,7 @@ class AppFixtures extends Fixture
                 'price' => 40,
                 'origin' => 'Brésil',
                 'description' => "The monstera deliociosa is a plant which need not much water but a lot of sunlight. But be careful, you must not put it under direct sun light, unless you won’t to burn it down.",
-                'image' => 'images/philodendron.png',
+                'image' => 'philodendron.png',
             ],
             'Aloe Vera' => [
                 'size' => 20,
@@ -40,7 +40,7 @@ class AppFixtures extends Fixture
                 'price' => 15,
                 'origin' => 'Indonésie',
                 'description' => "The monstera deliociosa is a plant which need not much water but a lot of sunlight. But be careful, you must not put it under direct sun light, unless you won’t to burn it down.",
-                'image' => 'images/aloe-vera.png',
+                'image' => 'aloe-vera.png',
             ],
         ];
 

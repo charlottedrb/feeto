@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Entity\Plant;
 use App\Form\PlantType;
 use App\Repository\PlantRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 #[Route('/plant')]
 class PlantController extends AbstractController
@@ -22,13 +24,32 @@ class PlantController extends AbstractController
     }
 
     #[Route('/new', name: 'app_plant_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, PlantRepository $plantRepository): Response
+    public function new(Request $request, PlantRepository $plantRepository, SluggerInterface $slugger): Response
     {
         $plant = new Plant();
         $form = $this->createForm(PlantType::class, $plant);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image_url')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $plant->setImageUrl($newFilename);
+            }
+
             $plantRepository->save($plant, true);
 
             return $this->redirectToRoute('app_plant_index', [], Response::HTTP_SEE_OTHER);

@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="text"], input[type="number"] {
+    @apply border-b-[2px] border-light-green bg-[transparent] outline-none font-serif text-light-green text-30 w-full py-[13px];
+}
+
+input[type="text"]::placeholder, input[type="number"]::placeholder, textarea::placeholder, label {
+    @apply font-serif text-light-green text-30;
+}
+
+textarea {
+    @apply border-b-[2px] border-light-green bg-[transparent] outline-none font-serif text-light-green text-30 w-full py-[13px];
+}
+
+.input-file-container {
+    @apply border-b-[2px] border-light-green bg-[transparent] outline-none font-serif text-30 py-[13px];
+}
+
+.input-file-container>label {
+    @apply cursor-copy;
+}
+

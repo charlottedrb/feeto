@@ -1,3 +1,7 @@
 a.cta-button {
-    @apply block w-[max-content] bg-white border-[1px] py-[25px] px-[60px] border-green text-black rounded-full text-32 font-sans hover:bg-green hover:text-light-green transition-all duration-300 ease-in-out;
+    @apply block w-[max-content] bg-white border-[1px] py-[15px] px-[40px] border-green text-black rounded-full text-30 font-sans hover:bg-green hover:text-light-green transition-all duration-300 ease-in-out;
+}
+
+.button-light {
+    @apply w-[max-content] bg-[transparent] border-[1px] py-[15px] px-[40px] border-light-green text-light-green rounded-full text-30 font-sans hover:bg-light-green hover:text-green transition-all duration-300 ease-in-out;
 }
