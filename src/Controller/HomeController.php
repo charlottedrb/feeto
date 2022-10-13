@@ -12,9 +12,17 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(PlantRepository $plantRepository): Response
     {
+        $ctaRedirection = 'app_register';
+        $ctaRedirectionLabel = 'Create an account';
+
+        if($this->getUser()) {
+            $ctaRedirection = 'app_plant_new';
+            $ctaRedirectionLabel = "Create a plant";
+        } 
         return $this->render('home.html.twig', [
             'plants' => $plantRepository->findAll(),
-            'ctaRedirection' => 'app_plant_new',
+            'ctaRedirection' => $ctaRedirection,
+            'ctaRedirectionLabel' => $ctaRedirectionLabel,
         ]);
     }
 }

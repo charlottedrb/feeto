@@ -3,17 +3,24 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.first_name) }}
-        {{ form_row(registrationForm.last_name) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    <div class="px-container mb-[60px]">
+        <div class="mb-[60px]">
+            <h1>Register</h1>
+            <span class="block font-serif text-dark-green pl-[220px]">Join a community of plant fanatics.</span>
+        </div>
+        {{ form_start(registrationForm, {'attr': {'class': 'flex flex-col items-center w-full form-dark'}}) }}
+            <div class="flex flex-col w-full">
+                <div class="flex gap-x-[20px]">
+                    <div class="w-6/12">{{ form_widget(registrationForm.username) }}</div>
+                    <div class="w-6/12">{{ form_widget(registrationForm.email) }}</div>
+                </div>
+                <div class="flex gap-x-[20px]">
+                    <div class="w-4/12">{{ form_widget(registrationForm.first_name) }}</div>
+                    <div class="w-4/12">{{ form_widget(registrationForm.last_name) }}</div>
+                    <div class="w-4/12">{{ form_widget(registrationForm.plainPassword) }}</div>
+                </div>
+            </div>
+            <button type="submit" class="button-dark-outlined mt-[60px]">Register</button>
+        {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}

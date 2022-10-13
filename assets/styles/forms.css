@@ -2,23 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type="text"], input[type="number"] {
+/* Form Light */
+
+.form-light input[type="text"],
+.form-light input[type="number"],
+.form-light input[type="email"],
+.form-light input[type="password"] {
     @apply border-b-[2px] border-light-green bg-[transparent] outline-none font-serif text-light-green text-30 w-full py-[13px];
 }
 
-input[type="text"]::placeholder, input[type="number"]::placeholder, textarea::placeholder, label {
+.form-light input[type="text"]::placeholder,
+.form-light input[type="number"]::placeholder,
+.form-light input[type="email"]::placeholder,
+.form-light input[type="password"]::placeholder,
+.form-light textarea::placeholder,
+.form-light label {
     @apply font-serif text-light-green text-30;
 }
 
-textarea {
+.form-light textarea {
     @apply border-b-[2px] border-light-green bg-[transparent] outline-none font-serif text-light-green text-30 w-full py-[13px];
 }
 
-.input-file-container {
+.form-light .input-file-container {
     @apply border-b-[2px] border-light-green bg-[transparent] outline-none font-serif text-30 py-[13px];
 }
 
-.input-file-container>label {
+.form-light .input-file-container>label {
     @apply cursor-copy;
 }
 
+/* Form Dark */
+
+.form-dark input[type="text"],
+.form-dark input[type="number"],
+.form-dark input[type="email"], .form-dark input[type="password"] {
+    @apply border-b-[2px] border-green bg-[transparent] outline-none font-serif text-green text-30 w-full py-[13px];
+}
+
+.form-dark input[type="text"]::placeholder,
+.form-dark input[type="number"]::placeholder,
+.form-dark input[type="email"]::placeholder,
+.form-dark input[type="password"]::placeholder, .form-dark textarea::placeholder,
+.form-dark label {
+    @apply font-serif text-green text-30;
+}
+
+.form-dark textarea {
+    @apply border-b-[2px] border-green bg-[transparent] outline-none font-serif text-green text-30 w-full py-[13px];
+}
+
+.form-dark .input-file-container {
+    @apply border-b-[2px] border-green bg-[transparent] outline-none font-serif text-30 py-[13px];
+}
+
+.form-dark .input-file-container>label {
+    @apply cursor-copy;
+}

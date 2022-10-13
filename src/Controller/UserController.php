@@ -12,5 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
 {
-    
+    #[Route('/profile', 'app_profile')] 
+    public function profile() {
+        return $this->render('user/profile.html.twig');
+    }
 }

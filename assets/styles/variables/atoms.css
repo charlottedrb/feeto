@@ -5,3 +5,7 @@ a.cta-button {
 .button-light {
     @apply w-[max-content] bg-[transparent] border-[1px] py-[15px] px-[40px] border-light-green text-light-green rounded-full text-30 font-sans hover:bg-light-green hover:text-green transition-all duration-300 ease-in-out;
 }
+
+.button-dark-outlined {
+    @apply w-[max-content] bg-[transparent] border-[1px] py-[15px] px-[40px] border-green text-green rounded-full text-30 font-sans hover:bg-green hover:text-light-green transition-all duration-300 ease-in-out;
+}

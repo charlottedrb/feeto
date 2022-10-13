@@ -19,15 +19,34 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username')
-            ->add('email', EmailType::class)
-            ->add('first_name', TextType::class)
-            ->add('last_name', TextType::class)
+            ->add('username', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Username'
+                ]
+            ])
+            ->add('email', EmailType::class, [
+                'attr' => [
+                    'placeholder' => 'Email'
+                ]
+            ])
+            ->add('first_name', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'First Name'
+                ]
+            ])
+            ->add('last_name', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Last Name'
+                ]
+            ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                    'placeholder' => 'Password'
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',

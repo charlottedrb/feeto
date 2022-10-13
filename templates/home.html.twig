@@ -8,7 +8,14 @@
     <h1 class="mb-[160px] px-container">Your new digital herbarium.</h1>
     <div class="relative w-full flex flex-col items-center">
         <div class="w-full h-[80vh] bg-green absolute top-[55px] left-0 -z-[1]"></div>
-        <h3 class="mb-[80px]">Hello Mathilde, check out our latest plants.</h3>
+        <h3 class="mb-[80px]">
+            {% if app.user %}
+                Hello {{ app.user.first_name }}, check out our latest plants.
+            {% else %}
+                Join us, <a class="underline" href="{{ path('app_register') }}">click here</a>.
+            {% endif %}
+            
+        </h3>
         <div class="grid grid-cols-3 w-full px-container gap-[20px] mb-170">
             {% for plant in plants|slice(0, 5) %}
                 {% include "plant/card.html.twig" %}
