@@ -17,7 +17,7 @@
         </h3>
         <div class="grid grid-cols-3 w-full px-container gap-[20px] mb-170">
             {% for plant in plants|slice(0, 5) %}
-                <a href="{{ path('app_plant_show', {'id': plant.id}) }}">{% include "plant/card.html.twig" %}</a>
+                {% include "plant/card.html.twig" %}
             {% endfor %}
         </div>
         {% include "partials/cta.html.twig" %}
