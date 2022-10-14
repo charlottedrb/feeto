@@ -1,7 +1,55 @@
 # Home 
-Your new digital herbarium: "Votre nouvel herbier digital"
+Baseline: "Votre nouvel herbier digital"
 Hello: "Bonjour"
-check out our latest plants: "jetez un oeil à nos dernières plantes"
+Check_new: "jetez un oeil à nos dernières plantes"
+Click: "cliquez ici"
+Join: "Rejoignez nous"
+
+# User
+Username: "Pseudo"
+Password: "Mot de passe"
+Profile: "Profil"
 
 # Login
-You are logged in as: "Vous êtes connecté(e) en tant que "
+Logged: "Vous êtes connecté(e) en tant que "
+Logout: "Déconnexion"
+
+# Register
+Register: "S\'inscrire"
+Signin: "Veuillez vous inscrire"
+Slogan: "Rejoignez la communauté des fanatiques de plantes."
+
+# Delete
+Delete: "Supprimer"
+Delete_confirm: "Êtes-vous sûr de vouloir supprimer cet élément ?"
+
+# Show
+Show: "Afficher"
+
+# Edit
+Edit: "Modifier"
+
+# Create
+Create: "Ajouter"
+
+# Category
+Category: "Catégorie"
+Cat_edit: "Éditer la catégorie"
+Cat_index: "Index de la catégorie"
+Cat_add: "Ajouter une nouvelle catégorie"
+
+# Not found
+Not_found: "aucun résultat"
+
+#Plant
+Plant_add: "Ajouter vos plantes"
+Plant_edit: "Modifier la plante"
+Plante_create: "Créer une nouvelle plante"
+Level: "Niveau"
+Plant_images: "Images de la plante"
+
+# Image
+Image_add: "Ajouter une image"
+
+# Share
+Share: "Partagez vos connaissances sur vos plantes préférées avec les utilisateurs de feetō. Vous pouvez publier des conseils sur les plantes existantes également ! Tous ensemble, créez l\'herbier le plus complet au monde !"
