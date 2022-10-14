@@ -1,0 +1,55 @@
+# Home 
+Baseline: "Your new digital herbarium"
+Hello: "Hello"
+Check_new: "check out our latest plants"
+Click: "click here"
+Join: "Join us"
+
+# User
+Username: "Username"
+Password: "Password"
+Profile: "Profile"
+
+# Login
+Logged: "You are logged in as "
+Logout: "Logout"
+
+# Register
+Register: "Register"
+Signin: "Please sign in"
+Slogan: "Join a community of plant fanatics."
+
+# Delete
+Delete: "Delete"
+Delete_confirm: "Are you sure you want to delete this item ?"
+
+# Show
+Show: "Show"
+
+# Edit
+Edit: "Edit"
+
+# Create
+Create: "Create new"
+
+# Category
+Category: "Category"
+Cat_edit: "Edit category"
+Cat_index: "Category index"
+Cat_add: "Create new category"
+
+# Not found
+Not_found: "No records found"
+
+# Plant
+Plant_add: "Add your plants"
+Plant_edit: "Edit Plant"
+Plante_create: "Create a new plant"
+Level: "Level"
+Plant_images: "Plant's img"
+
+# Image
+Image_add: "Add an image"
+
+# Share
+Share: "Share information on your favorite plants with feetō users. You can post advices on existing plants too ! Featuring everyone else, create the most complete herbarium in the world !"

@@ -10,7 +10,10 @@
     <h2 class="mb-50">{{ ctaTitle }}</h2>
 
     {% if isReviews %}
-        
+        {% for review in reviews %}
+            <p>@{{ review.user }}</p>
+            <p>@{{ review.content }}</p>
+        {% endfor %}
     {% else %}
         <p class="mb-50">{{ 'Share information on your favorite plants with feetō users. You can post advices on existing plants too ! Featuring everyone else, create the most complete herbarium in the world !'|trans }}</p>
     {% endif %}
