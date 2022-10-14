@@ -1,15 +1,23 @@
 <div class="h-[450px] bg-dark-green rounded-lg block relative p-[35px]">
-	<div class="absolute top-0 left-0 bg-white h-[80%] w-full rounded-lg rounded-b-[100px]"></div>
-	<div class="relative">
-		<h4>{{ plant.name }}</h4>
-		<div class="mt-4">
-			{% for category in plant.categories %}
-				<h5 class="block -mt-3">{{ category }}
-				</h5>
-			{% endfor %}
-		</div>
-	</div>
-	<div class="w-[65%] absolute bottom-[20px] right-[-80px] z-10 pointer-events-none">
-		<img class="w-full object-cover" src="{{ asset('images/' ~ plant.imageUrl) }}" alt="{{ plant.name }}">
-	</div>
+    <a href="{{ path('app_plant_show', {'id': plant.id }) }}">
+        <div class="absolute top-0 left-0 bg-white h-[80%] w-full rounded-lg rounded-b-[100px]"></div>
+        <div class="relative">
+            <h4>{{ plant.name }}</h4>
+            <div class="mt-4">
+            {% for category in plant.categories %}
+                <h5 class="block -mt-3">{{ category }} </h5> 
+            {% endfor %}
+            </div>
+        </div>
+        <div class="w-[65%] absolute bottom-[20px] right-[-80px] z-10 pointer-events-none">
+            <img class="w-full object-cover" src="{{ asset('images/' ~ plant.imageUrl) }}" alt="{{ plant.name }}">
+        </div>
+    </a>
+    {% set url = app.request.attributes.get('_route') %}
+    {% if is_granted('ROLE_ADMIN') and 'plant' in url %}
+        <div class="flex" style="position: absolute; bottom: 15px; left: 15px;">
+            <a href="{{ path('app_plant_edit', {'id': plant.id}) }}" class="tag_dark">{{ 'Edit'|trans }}</a>
+            {{ include('plant/_delete_form.html.twig') }}
+        </div>
+    {% endif %}
 </div>
