@@ -51,9 +51,13 @@ class Plant
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'plants')]
     private Collection $categories;
 
+    #[ORM\OneToMany(mappedBy: 'plant', targetEntity: Review::class)]
+    private Collection $reviews;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -172,5 +176,35 @@ class Plant
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @return Collection<int, Review>
+     */
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function addReview(Review $review): self
+    {
+        if (!$this->reviews->contains($review)) {
+            $this->reviews->add($review);
+            $review->setPlant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReview(Review $review): self
+    {
+        if ($this->reviews->removeElement($review)) {
+            // set the owning side to null (unless already changed)
+            if ($review->getPlant() === $this) {
+                $review->setPlant(null);
+            }
+        }
+
+        return $this;
     }
 }

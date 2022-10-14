@@ -31,6 +31,9 @@
             <img class="w-full object-cover" src="{{ asset('/images/' ~ plant.imageUrl) }}" alt="{{ 'Plant\'s img'|trans }}" />
         </div>
     </div>
+    <div>
+        {% include "partials/cta.html.twig" %}
+    </div>
 
     {# <a href="{{ path('app_plant_index') }}">back to list</a>
 

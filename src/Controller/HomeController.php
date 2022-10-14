@@ -23,6 +23,7 @@ class HomeController extends AbstractController
             'plants' => $plantRepository->findAll(),
             'ctaRedirection' => $ctaRedirection,
             'ctaRedirectionLabel' => $ctaRedirectionLabel,
+            'ctaTitle' => 'Add your plants'
         ]);
     }
 }

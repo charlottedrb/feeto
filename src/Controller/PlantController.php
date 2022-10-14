@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Plant;
 use App\Form\PlantType;
 use App\Repository\PlantRepository;
+use App\Repository\ReviewRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -62,10 +63,16 @@ class PlantController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_plant_show', methods: ['GET'])]
-    public function show(Plant $plant): Response
+    public function show(Plant $plant, ReviewRepository $reviewRepository): Response
     {
         return $this->render('plant/show.html.twig', [
             'plant' => $plant,
+            'isSmall' => false,
+            'ctaRedirection' => 'app_review_new',
+            'ctaRedirectionLabel' => 'Add a review',
+            'ctaTitle' => 'Reviews',
+            'isReviews' => true,
+            'reviews' => $reviewRepository->findBy(['plant' => $plant->getId()]),
         ]);
     }
 
