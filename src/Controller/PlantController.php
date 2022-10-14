@@ -25,6 +25,7 @@ class PlantController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/new', name: 'app_plant_new', methods: ['GET', 'POST'])]
     public function new(Request $request, PlantRepository $plantRepository, SluggerInterface $slugger): Response
     {
