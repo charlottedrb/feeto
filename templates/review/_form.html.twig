@@ -1,4 +1,10 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'class': 'form-light px-container'}}) }}
+
+    <div class="flex flex-col gap-y-[30px] items-center mb-60">
+        <div class="w-full">
+            {{ form_widget(form.title) }}
+            {{ form_widget(form.content) }}
+        </div>
+        <button class="button-dark-outlined">{{ button_label|default('Save') }}</button>
+    </div>
 {{ form_end(form) }}

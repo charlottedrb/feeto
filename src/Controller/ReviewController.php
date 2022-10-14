@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Plant;
 use App\Entity\Review;
 use App\Form\ReviewType;
+use App\Repository\PlantRepository;
 use App\Repository\ReviewRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/review')]
 class ReviewController extends AbstractController
@@ -17,18 +19,24 @@ class ReviewController extends AbstractController
     public function index(ReviewRepository $reviewRepository): Response
     {
         return $this->render('review/index.html.twig', [
-            'reviews' => $reviewRepository->findAll(),
+            'reviews' => $reviewRepository->findBy(['user' => $this->getUser()]),
         ]);
     }   
 
-    #[Route('/new', name: 'app_review_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ReviewRepository $reviewRepository): Response
+    #[Route('/new/{plantId}', name: 'app_review_new', methods: ['GET', 'POST'])]
+    public function new(int $plantId, Request $request, ReviewRepository $reviewRepository, PlantRepository $plantRepository): Response
     {
+
         $review = new Review();
         $form = $this->createForm(ReviewType::class, $review);
         $form->handleRequest($request);
+        $plant = $plantRepository->findOneBy(['id' => $plantId]);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $review->setPlant($plant);
+            $review->setUser($this->getUser());
+            $review->setCreatedAt(new \DateTimeImmutable());
+
             $reviewRepository->save($review, true);
 
             return $this->redirectToRoute('app_review_index', [], Response::HTTP_SEE_OTHER);
@@ -37,6 +45,7 @@ class ReviewController extends AbstractController
         return $this->renderForm('review/new.html.twig', [
             'review' => $review,
             'form' => $form,
+            'plantName' => $plant->getName(),
         ]);
     }
 

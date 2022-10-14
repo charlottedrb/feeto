@@ -5,16 +5,16 @@
 		</div>
 		<div class="flex gap-x-[50px]">
 			<div class="flex gap-x-[30px] font-sans text-30">
-				<a href="{{ path('app_plant_index') }}">plants</a>
+				<a href="{{ path('app_plant_index') }}">{{'Plants'|trans|lower}}</a>
 				{% if is_granted('ROLE_ADMIN') %}
 					<a href="#">{{ 'admin'|trans }}</a>
 				{% endif %}
 				{% if is_granted('ROLE_USER') %}
-					<a href="{{ path('app_profile') }}">profile</a>
-					<a href="#">my reviews</a>
-					<a href="{{ path('app_logout') }}">logout</a>
+					<a href="{{ path('app_profile') }}">{{ 'Profile'|trans|lower }}</a>
+					<a href="{{ path('app_review_index') }}">{{ 'My_reviews'|trans|lower }}</a>
+					<a href="{{ path('app_logout') }}">{{ 'Logout'|trans|lower }}</a>
 				{% else %}
-					<a href="{{ path('app_login') }}">login</a>
+					<a href="{{ path('app_login') }}">{{ 'Login'|trans|lower }}</a>
 				{% endif %}
 			</div>
 			<div class="flex gap-x-[10px] font-sans text-30">

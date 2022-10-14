@@ -1,3 +1,8 @@
+# Header
+Plants: "Plantes"
+Login: "Connexion"
+My_reviews: "Mes avis"
+
 # Home 
 Baseline: "Votre nouvel herbier digital"
 Hello: "Bonjour"
@@ -47,6 +52,10 @@ Plant_edit: "Modifier la plante"
 Plante_create: "Créer une nouvelle plante"
 Level: "Niveau"
 Plant_images: "Images de la plante"
+
+# Review 
+Review: "Évaluer"
+NoReviews: "Aucun avis pour le moment."
 
 # Image
 Image_add: "Ajouter une image"

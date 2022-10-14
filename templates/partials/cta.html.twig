@@ -11,12 +11,19 @@
 
     {% if isReviews %}
         {% for review in reviews %}
-            <p>@{{ review.user }}</p>
-            <p>@{{ review.content }}</p>
+            <div class="w-full mb-50">
+                <div class="flex w-full justify-between items-center">
+                    <p class="text-gray font-serif mb-[10px]">@{{ review.user }}</p>
+                    <span class="border-[1px] border-gray px-2 py-2 text-gray rounded-full">{{ review.createdAt|date('d.m.Y') }}</span>
+                </div>
+                <p>{{ review.content }}</p>
+            </div>
+        {% else %}
+            <p class="mb-50">{{ 'NoReviews'|trans }}</p>
         {% endfor %}
+        <a href="{{ path(ctaRedirection, {'plantId': plant.id}) }}" class="cta-button">{{ ctaRedirectionLabel }}</a>
     {% else %}
         <p class="mb-50">{{ 'Share information on your favorite plants with feetō users. You can post advices on existing plants too ! Featuring everyone else, create the most complete herbarium in the world !'|trans }}</p>
+        <a href="{{ path(ctaRedirection) }}" class="cta-button">{{ ctaRedirectionLabel }}</a>
     {% endif %}
-    
-    <a href="{{ path(ctaRedirection) }}" class="cta-button">{{ ctaRedirectionLabel }}</a>
 </div>

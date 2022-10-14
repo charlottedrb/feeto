@@ -2,16 +2,17 @@
 // src/Fixtures/AppFixtures.php
 namespace App\Fixtures;
 
-use App\Entity\Plant;
-use App\Entity\Category;
 use App\Entity\User;
-use Doctrine\Bundle\FixturesBundle\Fixture;
+use App\Entity\Plant;
+use App\Entity\Review;
+use App\Entity\Category;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
-    public function __construct(UserPasswordHasherInterface $userPasswordHasher) 
+    public function __construct(UserPasswordHasherInterface $userPasswordHasher)
     {
         $this->passwordHasher = $userPasswordHasher;
     }
@@ -25,6 +26,27 @@ class AppFixtures extends Fixture
                 'last_name' => 'Feeto',
                 'password' => 'feeto2',
                 'title' => 'Jardinier confirmé',
+            ],
+            'charlottedb' => [
+                'email' => 'c.derbaghdassarian@gmail.com',
+                'first_name' => 'Charlotte',
+                'last_name' => 'Der Baghdassarian',
+                'password' => 'charlotte',
+                'title' => 'Jardinier/ère débutant(e)',
+            ]
+        ];
+        $reviews = [
+            [
+                'title' => 'I love this plant',
+                'content' => 'Bought it two months ago and it grows so much ! Very graphic and so beautiful ! Be aware if you have animals like cats, they will destroy it. Place it in a place where they can\'t go.',
+                'user' => 'charlottedb',
+                'plant' => 'Monstera Deliciosa',
+            ],
+            [
+                'title' => 'I love this plant',
+                'content' => 'Bought it two months ago and it grows so much ! Very graphic and so beautiful ! Be aware if you have animals like cats, they will destroy it. Place it in a place where they can\'t go.',
+                'user' => 'charlottedb',
+                'plant' => 'Philodendron',
             ],
         ];
         $categories = ['Intérieur', 'Extérieur'];
@@ -77,6 +99,7 @@ class AppFixtures extends Fixture
             $dbUser->setRoles(['ROLE_ADMIN']);
             $dbUser->addRole('ROLE_ADMIN');
             $manager->persist($dbUser);
+            $this->addReference($username, $dbUser);
         }
 
         foreach ($categories as $cat) {
@@ -101,7 +124,7 @@ class AppFixtures extends Fixture
             $manager->persist($category);
             $this->addReference($cat, $category);
         }
-        
+
         foreach ($plants as $name => $plant) {
             $dbPlant = new Plant();
             $dbPlant->setName($name);
@@ -116,6 +139,17 @@ class AppFixtures extends Fixture
                 $dbPlant->addCategory($this->getReference($cat));
             }
             $manager->persist($dbPlant);
+            $this->addReference($name, $dbPlant);
+        }
+
+        foreach ($reviews as $review) {
+            $dbReview = new Review();
+            $dbReview->setTitle($review['title']);
+            $dbReview->setContent($review['content']);
+            $dbReview->setUser($this->getReference($review['user']));
+            $dbReview->setPlant($this->getReference($review['plant']));
+            $dbReview->setCreatedAt(new \DateTimeImmutable());
+            $manager->persist($dbReview);
         }
 
         $manager->flush();

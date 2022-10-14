@@ -1,3 +1,8 @@
+# Header
+Plants: "Plants"
+Login: "Login"
+My_reviews: "My reviews"
+
 # Home 
 Baseline: "Your new digital herbarium"
 Hello: "Hello"
@@ -47,6 +52,10 @@ Plant_edit: "Edit Plant"
 Plante_create: "Create a new plant"
 Level: "Level"
 Plant_images: "Plant's img"
+
+# Review 
+Review: "Review"
+NoReviews: "No reviews yet."
 
 # Image
 Image_add: "Add an image"
