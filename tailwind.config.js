@@ -53,6 +53,7 @@ module.exports = {
       margin: {
         '25': '25px',
         '50': '50px',
+        '60': '60px',
         '130': '130px',
         '170': '170px',
         'container': '50px'

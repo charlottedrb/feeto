@@ -14,7 +14,7 @@
     <h2>NOT ADMIN</h2>
 {% endif %} #}
 
-    <div class="px-container">
+    <div class="px-container relative">
         <h1 class="w-5/12">{{ plant.name }}</h1>
         <div class="mt-25">
             {% for categorie in plant.categories %}
@@ -27,7 +27,9 @@
             <p class="tag">{{ plant.origin }}</p>
             <p class="tag">{{ 'Level'|trans }} {{ plant.complexity }}</p>
         </div>
-        <img class="absolute" style="z-index: -1; right: -10%; height: 160%; top: 20%;" src="{{ asset('/images/' ~ plant.imageUrl) }}" alt="{{ 'Plant\'s img'|trans }}" />
+        <div class="absolute -right-[18vw] -top-[10vh] -z-[1] w-[70vw]">
+            <img class="w-full object-cover" src="{{ asset('/images/' ~ plant.imageUrl) }}" alt="{{ 'Plant\'s img'|trans }}" />
+        </div>
     </div>
 
     {# <a href="{{ path('app_plant_index') }}">back to list</a>

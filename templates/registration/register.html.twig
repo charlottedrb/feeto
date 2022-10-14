@@ -3,12 +3,12 @@
 {% block title %}Feetō{% endblock %}
 
 {% block body %}
-    <div class="px-container mb-[60px]">
-        <div class="mb-[60px]">
+    <div class="px-container mb-60">
+        <div class="mb-60">
             <h1>{{ 'Register'|trans }}</h1>
             <span class="block font-serif text-dark-green pl-[220px]">{{ 'Join a community of plant fanatics.'|trans }}</span>
         </div>
-        {{ form_start(registrationForm, {'attr': {'class': 'flex flex-col items-center w-full form-dark'}}) }}
+        {{ form_start(registrationForm, {'attr': {'class': 'flex flex-col items-center w-full form-light'}}) }}
             <div class="flex flex-col w-full">
                 <div class="flex gap-x-[20px]">
                     <div class="flex flex-col w-6/12">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="button-dark-outlined mt-[60px]">{{ 'Register'|trans }}</button>
+            <button type="submit" class="button-dark-outlined mt-60">{{ 'Register'|trans }}</button>
         {{ form_end(registrationForm) }}
     </div>
 {% endblock %}
