@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/plant')]
 class PlantController extends AbstractController
@@ -24,6 +25,7 @@ class PlantController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/new', name: 'app_plant_new', methods: ['GET', 'POST'])]
     public function new(Request $request, PlantRepository $plantRepository, SluggerInterface $slugger): Response
     {
@@ -94,6 +96,7 @@ class PlantController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_plant_delete', methods: ['POST'])]
     public function delete(Request $request, Plant $plant, PlantRepository $plantRepository): Response
     {

@@ -10,6 +10,7 @@ module.exports = {
       'sans': ['HelveticaNeue', 'sans-serif'],
     },
     fontSize: {
+      '22': '22px',
       '30': '30px',
       '32': '32px',
       '36': '36px',

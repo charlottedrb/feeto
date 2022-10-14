@@ -50,3 +50,8 @@ p {
     @apply font-sans text-white text-32 bg-dark-green rounded-full px-16 py-4 mr-10;
     display: initial;
 }
+
+.tag_dark {
+    @apply font-sans text-dark-green text-22 bg-white rounded-full px-8 py-3 mr-4;
+    display: initial;
+}
