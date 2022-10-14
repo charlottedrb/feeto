@@ -14,7 +14,12 @@
             <div class="w-full mb-50">
                 <div class="flex w-full justify-between items-center">
                     <p class="text-gray font-serif mb-[10px]">@{{ review.user }}</p>
-                    <span class="border-[1px] border-gray px-2 py-2 text-gray rounded-full">{{ review.createdAt|date('d.m.Y') }}</span>
+                    <div class="flex items-center">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            {{ include('review/_delete_form.html.twig') }}
+                        {% endif %}
+                        <span class="border-[1px] border-gray px-2 py-2 text-gray rounded-full">{{ review.createdAt|date('d.m.Y') }}</span>
+                    </div>
                 </div>
                 <p>{{ review.content }}</p>
             </div>
