@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -16,41 +17,48 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class PlantType extends AbstractType
 {
+    private $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+    
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Name'
+                    'placeholder' => $this->translator->trans('Plant_name')
                 ],
             ])
             ->add('size', IntegerType::class, [
                 'attr' => [
-                    'placeholder' => 'Size',
+                    'placeholder' => $this->translator->trans('Size'),
                     'min' => 0,
                 ],
             ])
             ->add('price', IntegerType::class, [
                 'attr' => [
-                    'placeholder' => 'Price',
+                    'placeholder' => $this->translator->trans('Price'),
                     'min' => 0,
                 ],
             ])
             ->add('origin', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Origin'
+                    'placeholder' => $this->translator->trans('Origin')
                 ],
             ])
             ->add('complexity', IntegerType::class, [
                 'attr' => [
-                    'placeholder' => 'Complexity',
+                    'placeholder' => $this->translator->trans('Complexity'),
                     'min' => 0,
                     'max' => 5,
                 ],
             ])
             ->add('description', TextareaType::class, [
                 'attr' => [
-                    'placeholder' => 'Description',
+                    'placeholder' => $this->translator->trans('Description'),
                     'rows' => 5,
                 ],
             ])
@@ -60,7 +68,7 @@ class PlantType extends AbstractType
                         'mimeTypes' => [
                             'image/png',
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid PNG image.',
+                        'mimeTypesMessage' => $this->translator->trans('ImageErrorMsg'),
                     ])
                 ],
             ])

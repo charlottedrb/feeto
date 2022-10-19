@@ -14,6 +14,9 @@ Join: "Join us"
 Username: "Username"
 Password: "Password"
 Profile: "Profile"
+FirstName: "First name"
+LastName: "Last name"
+Title: "Title"
 
 # Login
 Logged: "You are logged in as "
@@ -23,6 +26,10 @@ Logout: "Logout"
 Register: "Register"
 Signin: "Please sign in"
 Slogan: "Join a community of plant fanatics."
+EnterPassword: "Please enter a password"
+PasswordMinMsg: "Your password should be at least"
+Characters: "characters"
+CreateAccount: "Create an account"
 
 # Delete
 Delete: "Delete"
@@ -52,10 +59,20 @@ Plant_edit: "Edit Plant"
 Plante_create: "Create a new plant"
 Level: "Level"
 Plant_images: "Plant's img"
+Plant_name: "Name"
+Size: "Size"
+Price: "Price"
+Origin: "Origin"
+Complexity: "Complexity"
+Description: "Description"
+ImageErrorMsg: "Please upload a valid PNG image."
 
 # Review 
 Review: "Review"
+Reviews: "Reviews"
 NoReviews: "No reviews yet."
+Content: "Content"
+AddReview: "Add a review"
 
 # Image
 Image_add: "Add an image"

@@ -13,30 +13,38 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationFormType extends AbstractType
 {
+    private $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('username', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Username'
+                    'placeholder' => $this->translator->trans('Username'),
                 ]
             ])
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'placeholder' => 'Email'
+                    'placeholder' => $this->translator->trans('Email')
                 ]
             ])
             ->add('first_name', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'First Name'
+                    'placeholder' => $this->translator->trans('FirstName')
                 ]
             ])
             ->add('last_name', TextType::class, [
                 'attr' => [
-                    'placeholder' => 'Last Name'
+                    'placeholder' => $this->translator->trans('LastName')
                 ]
             ])
             ->add('plainPassword', PasswordType::class, [
@@ -45,15 +53,15 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'autocomplete' => 'new-password',
-                    'placeholder' => 'Password'
+                    'placeholder' => $this->translator->trans('Password')
                 ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => $this->translator->trans('EnterPassword'),
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => $this->translator->trans('PasswordMinMsg') . "{{ limit }}'" . $this->translator->trans('Characters'),
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),

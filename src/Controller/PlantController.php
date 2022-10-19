@@ -13,6 +13,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/plant')]
 class PlantController extends AbstractController
@@ -65,14 +66,14 @@ class PlantController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_plant_show', methods: ['GET'])]
-    public function show(Plant $plant, ReviewRepository $reviewRepository): Response
+    public function show(Plant $plant, ReviewRepository $reviewRepository, TranslatorInterface $translator): Response
     {
         return $this->render('plant/show.html.twig', [
             'plant' => $plant,
             'isSmall' => false,
             'ctaRedirection' => 'app_review_new',
-            'ctaRedirectionLabel' => 'Add a review',
-            'ctaTitle' => 'Reviews',
+            'ctaRedirectionLabel' => $translator->trans('Add a review'),
+            'ctaTitle' => $translator->trans('Reviews'),
             'isReviews' => true,
             'reviews' => $reviewRepository->findBy(['plant' => $plant->getId()]),
         ]);

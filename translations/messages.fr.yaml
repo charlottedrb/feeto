@@ -14,6 +14,9 @@ Join: "Rejoignez nous"
 Username: "Pseudo"
 Password: "Mot de passe"
 Profile: "Profil"
+FirstName: "Prénom"
+LastName: "Nom"
+Title: "Titre"
 
 # Login
 Logged: "Vous êtes connecté(e) en tant que "
@@ -23,6 +26,10 @@ Logout: "Déconnexion"
 Register: "S'inscrire"
 Signin: "Veuillez vous inscrire"
 Slogan: "Rejoignez la communauté des fanatiques de plantes."
+EnterPassword: "Veuillez saisir un mot de passe"
+PasswordMinMsg: "Votre mot de passe doit être d'au moins"
+Characters: "caractères"
+CreateAccount: "Créer un compte"
 
 # Delete
 Delete: "Supprimer"
@@ -52,10 +59,20 @@ Plant_edit: "Modifier la plante"
 Plante_create: "Créer une nouvelle plante"
 Level: "Niveau"
 Plant_images: "Images de la plante"
+Plant_name: "Nom"
+Size: "Taille"
+Price: "Prix"
+Origin: "Origine"
+Complexity: "Difficulté"
+Description: "Description"
+ImageErrorMsg: "Merci de déposer une image au format PNG."
 
 # Review 
 Review: "Évaluer"
+Reviews: "Avis"
 NoReviews: "Aucun avis pour le moment."
+Content: "Contenu"
+AddReview: "Ajouter un avis"
 
 # Image
 Image_add: "Ajouter une image"

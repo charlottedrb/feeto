@@ -6,24 +6,25 @@ use App\Repository\PlantRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(PlantRepository $plantRepository): Response
+    public function index(PlantRepository $plantRepository, TranslatorInterface $translator): Response
     {
         $ctaRedirection = 'app_register';
-        $ctaRedirectionLabel = 'Create an account';
+        $ctaRedirectionLabel = $translator->trans('Create an account');
 
         if($this->getUser()) {
             $ctaRedirection = 'app_plant_new';
-            $ctaRedirectionLabel = "Create a plant";
+            $ctaRedirectionLabel = $translator->trans('Plante_create');
         } 
         return $this->render('home.html.twig', [
             'plants' => $plantRepository->findAll(),
             'ctaRedirection' => $ctaRedirection,
             'ctaRedirectionLabel' => $ctaRedirectionLabel,
-            'ctaTitle' => 'Add your plants'
+            'ctaTitle' => $translator->trans('Plant_add')
         ]);
     }
 }
