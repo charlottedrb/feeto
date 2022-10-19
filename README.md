@@ -2,7 +2,7 @@
 
 #### Envie de partager vos savoirs sur les plantes ? Ou simplement besoin d'aide pour vous occuper des vôtres ? 
 
-![image](https://user-images.githubusercontent.com/72490689/195856421-2387884f-3bfd-49de-afa6-397f44ca1db7.png)
+![image](https://user-images.githubusercontent.com/47384185/196681754-c1a3178b-65f9-43c9-b9ed-93a6dadd395a.png)
 
 ## Utilisation
 
