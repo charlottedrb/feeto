@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/review')]
 class ReviewController extends AbstractController
@@ -23,6 +24,7 @@ class ReviewController extends AbstractController
         ]);
     }   
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/new/{plantId}', name: 'app_review_new', methods: ['GET', 'POST'])]
     public function new(int $plantId, Request $request, ReviewRepository $reviewRepository, PlantRepository $plantRepository): Response
     {
@@ -75,6 +77,7 @@ class ReviewController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_review_delete', methods: ['POST'])]
     public function delete(Request $request, Review $review, ReviewRepository $reviewRepository): Response
     {
