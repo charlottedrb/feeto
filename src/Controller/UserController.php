@@ -12,9 +12,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
 {
-    #[Route('/profile', 'app_profile')] 
-    public function profile() : Response
+    #[Route('/profile', 'app_profile', methods: ['GET', 'POST'])] 
+    public function profile(Request $request, UserRepository $userRepository) : Response
     {
+        $form = $this->createForm(UserType::class, $this->getUser());
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $userRepository->save($this->getUser(), true);
+
+            return $this->redirectToRoute('app_plant_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('user/profile.html.twig', [
+            'user' => $this->getUser(),
+            'form' => $form,
+        ]);
         return $this->render('user/profile.html.twig');
     }
 
